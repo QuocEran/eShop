@@ -1,6 +1,8 @@
 ﻿using eShop.Data.Configurations;
 using eShop.Data.Extensions;
 using eShop.Data.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -11,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace eShop.Data.EF
 {
-    public class eShopDbContext : DbContext
+    public class eShopDbContext : IdentityDbContext<AppUser, AppRole, Guid>
     {
         public eShopDbContext(DbContextOptions<eShopDbContext> options) : base(options)
         {
@@ -20,7 +22,7 @@ namespace eShop.Data.EF
       
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // Config table
+            // Config tables
             modelBuilder.ApplyConfiguration(new CartConfiguration());
             modelBuilder.ApplyConfiguration(new AppConfigConfiguration());
             modelBuilder.ApplyConfiguration(new ProductConfiguration());
@@ -34,6 +36,15 @@ namespace eShop.Data.EF
             modelBuilder.ApplyConfiguration(new ProductTranslationConfiguration());
             modelBuilder.ApplyConfiguration(new PromotionConfiguration());
             modelBuilder.ApplyConfiguration(new TransactionConfiguration());
+            // Config Identity tables
+            modelBuilder.ApplyConfiguration(new AppUserConfiguration());
+            modelBuilder.ApplyConfiguration(new AppRoleConfiguration());
+
+            modelBuilder.Entity<IdentityUserClaim<Guid>>().ToTable("AppUserClaims");
+            modelBuilder.Entity<IdentityUserRole<Guid>>().ToTable("AppUserRoles").HasKey(x => new {x.UserId, x.RoleId});
+            modelBuilder.Entity<IdentityUserLogin<Guid>>().ToTable("AppUserLogins").HasKey(x => x.UserId);
+            modelBuilder.Entity<IdentityRoleClaim<Guid>>().ToTable("AppRoleClaims");
+            modelBuilder.Entity<IdentityUserToken<Guid>>().ToTable("AppUserTokens").HasKey(x => x.UserId);
 
             // Dataseeding ( get Seed() from extensions )
 

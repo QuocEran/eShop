@@ -19,5 +19,6 @@ namespace eShop.Data.Models
 
         public DateTime DateCreated { get; set; }
 
+        public AppUser AppUser { get; set; }
     }
 }
