@@ -18,6 +18,9 @@ namespace eShop.Data.Models
         public string Message { set; get; }
         public TransactionStatus Status { set; get; }
         public string Provider { set; get; }
+        public Guid UserId { set; get; }
+        public AppUser AppUser { set; get; }
+
 
     }
 }

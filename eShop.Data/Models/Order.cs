@@ -19,5 +19,7 @@ namespace eShop.Data.Models
         public OrderStatus Status { set; get; }
 
         public List<OrderDetail> OrderDetails { get; set; }
+
+        public AppUser AppUser { get; set; }
     }
 }
