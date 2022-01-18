@@ -10,7 +10,7 @@ using eShop.Data.EF;
 namespace eShop.Data.Migrations
 {
     [DbContext(typeof(eShopDbContext))]
-    [Migration("20220117145703_Initial")]
+    [Migration("20220118070057_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -207,7 +207,7 @@ namespace eShop.Data.Migrations
                     b.Property<DateTime>("OrderDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2022, 1, 17, 21, 57, 3, 221, DateTimeKind.Local).AddTicks(9452));
+                        .HasDefaultValue(new DateTime(2022, 1, 18, 14, 0, 57, 146, DateTimeKind.Local).AddTicks(606));
 
                     b.Property<string>("ShipAddress")
                         .IsRequired()

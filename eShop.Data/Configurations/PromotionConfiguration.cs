@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace eShop.Data.Models
+namespace eShop.Data.Configurations
 {
     public class PromotionConfiguration : IEntityTypeConfiguration<Promotion>
     {
