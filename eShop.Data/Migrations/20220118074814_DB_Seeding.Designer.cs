@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using eShop.Data.EF;
 
 namespace eShop.Data.Migrations
 {
     [DbContext(typeof(eShopDbContext))]
-    partial class eShopDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220118074814_DB_Seeding")]
+    partial class DB_Seeding
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -294,7 +296,7 @@ namespace eShop.Data.Migrations
                     b.Property<DateTime>("OrderDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2022, 1, 18, 14, 53, 35, 218, DateTimeKind.Local).AddTicks(5049));
+                        .HasDefaultValue(new DateTime(2022, 1, 18, 14, 48, 13, 945, DateTimeKind.Local).AddTicks(3538));
 
                     b.Property<string>("ShipAddress")
                         .IsRequired()
@@ -367,6 +369,9 @@ namespace eShop.Data.Migrations
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
+                    b.Property<string>("SeoAlias")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("Stock")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
@@ -385,7 +390,7 @@ namespace eShop.Data.Migrations
                         new
                         {
                             Id = 1,
-                            DateCreated = new DateTime(2022, 1, 18, 14, 53, 35, 226, DateTimeKind.Local).AddTicks(6190),
+                            DateCreated = new DateTime(2022, 1, 18, 14, 48, 13, 959, DateTimeKind.Local).AddTicks(1217),
                             OriginalPrice = 100000m,
                             Price = 200000m,
                             Stock = 0,
